@@ -6,9 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import spring.main.board.domain.BoardItems;
 import spring.main.board.service.BoardService;
 import spring.main.board.service.BoardServiceImpl;
@@ -25,5 +23,12 @@ public class BoardController {
     private ResponseEntity<Page<BoardItems>> showList(Pageable pageable) {
         Page<BoardItems> page = boardService.findAll(pageable);
         return new ResponseEntity<Page<BoardItems>>(page, HttpStatus.OK);
+    }
+
+    @GetMapping("/one/{id}")
+    private ResponseEntity<BoardItems> showOne(@PathVariable(name = "id") Long id) {
+        BoardItems item = boardService.findByID(id).get();
+
+        return new ResponseEntity<BoardItems>(item, HttpStatus.OK);
     }
 }
