@@ -11,6 +11,8 @@ import spring.main.board.domain.BoardItems;
 import spring.main.board.service.BoardService;
 import spring.main.board.service.BoardServiceImpl;
 
+import java.util.Date;
+
 @Controller
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -34,6 +36,9 @@ public class BoardController {
 
     @PostMapping("/add")
     private ResponseEntity<BoardItems> createOne(@RequestBody BoardItems item) {
+        Date date = new Date();
+        item.setDate(date);
+        item.setViewCnt(0L);
         item = boardService.saveItem(item);
 
         return new ResponseEntity<BoardItems>(item, HttpStatus.OK);

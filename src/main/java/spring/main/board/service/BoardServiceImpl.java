@@ -34,10 +34,6 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public BoardItems saveItem(BoardItems item) {
-        Date date = new Date();
-        item.setDate(date);
-        item.setViewCnt(0L);
-
         boardRepository.save(item);
         return item;
     }
