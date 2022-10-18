@@ -18,7 +18,7 @@ public class BoardItems {
     @Column(columnDefinition = "TEXT")
     private String text;
     @Column
-    private Long vieCnt;
+    private Long viewCnt;
 
     public Long getID() {
         return ID;
@@ -52,11 +52,11 @@ public class BoardItems {
         this.text = text;
     }
 
-    public Long getVieCnt() {
-        return vieCnt;
+    public Long getViewCnt() {
+        return viewCnt;
     }
 
-    public void setVieCnt(Long vieCnt) {
-        this.vieCnt = vieCnt;
+    public void setViewCnt(Long viewCnt) {
+        this.viewCnt = viewCnt;
     }
 }

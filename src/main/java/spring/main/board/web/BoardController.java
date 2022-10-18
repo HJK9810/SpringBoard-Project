@@ -31,4 +31,11 @@ public class BoardController {
 
         return new ResponseEntity<BoardItems>(item, HttpStatus.OK);
     }
+
+    @PostMapping("/add")
+    private ResponseEntity<BoardItems> createOne(@RequestBody BoardItems item) {
+        item = boardService.saveItem(item);
+
+        return new ResponseEntity<BoardItems>(item, HttpStatus.OK);
+    }
 }

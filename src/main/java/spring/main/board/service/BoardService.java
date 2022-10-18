@@ -11,4 +11,6 @@ public interface BoardService {
     Page<BoardItems> findAll(Pageable pageable);
     Optional<BoardItems> findByID(Long id);
     List<BoardItems> findAllByID(Long id);
+
+    BoardItems saveItem(BoardItems item);
 }
