@@ -39,6 +39,11 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
+    public void deletItem(Long id) {
+        boardRepository.deleteById(id);
+    }
+
+    @Override
     public boolean checkNull(String str) {
         return str == null || str.isEmpty();
     }

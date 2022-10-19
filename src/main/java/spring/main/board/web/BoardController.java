@@ -59,4 +59,11 @@ public class BoardController {
         item = boardService.findByID(id).get();
         return new ResponseEntity<BoardItems>(item, HttpStatus.OK);
     }
+
+    @DeleteMapping("/del/{id}")
+    private ResponseEntity<String> deletOne(@PathVariable(name = "id") Long id) {
+        boardService.deletItem(id);
+
+        return new ResponseEntity<String>("Delete Clear!", HttpStatus.OK);
+    }
 }
