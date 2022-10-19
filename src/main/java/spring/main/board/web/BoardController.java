@@ -30,6 +30,8 @@ public class BoardController {
     @GetMapping("/one/{id}")
     private ResponseEntity<BoardItems> showOne(@PathVariable(name = "id") Long id) {
         BoardItems item = boardService.findByID(id).get();
+        item.setViewCnt(item.getViewCnt() + 1);
+        item = boardService.saveItem(item);
 
         return new ResponseEntity<BoardItems>(item, HttpStatus.OK);
     }
