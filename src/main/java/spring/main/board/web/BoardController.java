@@ -43,4 +43,20 @@ public class BoardController {
 
         return new ResponseEntity<BoardItems>(item, HttpStatus.OK);
     }
+
+    @PostMapping("/edit/{id}")
+    private ResponseEntity<BoardItems> editOne(@PathVariable(name = "id") Long id, @RequestBody BoardItems item) {
+        BoardItems finalItem = item;
+        boardService.findByID(id).ifPresent(change -> {
+            if (!change.getTitle().equals(finalItem.getTitle()) && !boardService.checkNull(finalItem.getTitle())) {
+                change.setTitle(finalItem.getTitle());
+            }
+            if (!change.getText().equals(finalItem.getText()) && !boardService.checkNull(finalItem.getText())) {
+                change.setText(finalItem.getText());
+            }
+            boardService.saveItem(change);
+        });
+        item = boardService.findByID(id).get();
+        return new ResponseEntity<BoardItems>(item, HttpStatus.OK);
+    }
 }

@@ -13,4 +13,6 @@ public interface BoardService {
     List<BoardItems> findAllByID(Long id);
 
     BoardItems saveItem(BoardItems item);
+
+    boolean checkNull(String str);
 }

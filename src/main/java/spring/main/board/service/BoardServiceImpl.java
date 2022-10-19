@@ -37,4 +37,9 @@ public class BoardServiceImpl implements BoardService{
         boardRepository.save(item);
         return item;
     }
+
+    @Override
+    public boolean checkNull(String str) {
+        return str == null || str.isEmpty();
+    }
 }
