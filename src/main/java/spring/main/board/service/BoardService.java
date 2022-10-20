@@ -12,7 +12,7 @@ public interface BoardService {
     Optional<BoardItems> findByID(Long id);
     List<BoardItems> findAllByID(Long id);
 
-    BoardItems saveItem(BoardItems item);
+    void saveItem(BoardItems item);
     void deletItem(Long id);
 
     boolean checkNull(String str);

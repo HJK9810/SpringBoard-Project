@@ -31,7 +31,7 @@ public class BoardController {
     private ResponseEntity<BoardItems> showOne(@PathVariable(name = "id") Long id) {
         BoardItems item = boardService.findByID(id).get();
         item.setViewCnt(item.getViewCnt() + 1);
-        item = boardService.saveItem(item);
+        boardService.saveItem(item);
 
         return new ResponseEntity<BoardItems>(item, HttpStatus.OK);
     }
@@ -41,7 +41,8 @@ public class BoardController {
         Date date = new Date();
         item.setDate(date);
         item.setViewCnt(0L);
-        item = boardService.saveItem(item);
+        boardService.saveItem(item);
+        item = boardService.findByID(item.getID()).get();
 
         return new ResponseEntity<BoardItems>(item, HttpStatus.OK);
     }

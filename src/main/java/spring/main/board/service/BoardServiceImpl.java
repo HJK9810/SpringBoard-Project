@@ -33,9 +33,8 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public BoardItems saveItem(BoardItems item) {
+    public void saveItem(BoardItems item) {
         boardRepository.save(item);
-        return item;
     }
 
     @Override
