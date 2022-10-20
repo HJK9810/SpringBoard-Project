@@ -71,9 +71,11 @@ public class BoardController {
     }
 
     @DeleteMapping("/del/{id}")
-    private ResponseEntity<String> deletOne(@PathVariable(name = "id") Long id) {
+    private ResponseEntity<BoardItems> deletOne(@PathVariable(name = "id") Long id) {
+        BoardItems item = boardService.findByID(id).get();
+        item.setTitle("Delete Clear!");
         boardService.deletItem(id);
 
-        return new ResponseEntity<String>("Delete Clear!", HttpStatus.OK);
+        return new ResponseEntity<BoardItems>(item, HttpStatus.OK);
     }
 }
