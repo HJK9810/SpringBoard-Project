@@ -50,6 +50,8 @@ public class BoardController {
     @GetMapping("/edit/{id}")
     private ResponseEntity<BoardItems> showforEdit(@PathVariable(name = "id") Long id) {
         BoardItems item = boardService.findByID(id).get();
+        item.setViewCnt(item.getViewCnt() - 1);
+        boardService.saveItem(item);
 
         return new ResponseEntity<BoardItems>(item, HttpStatus.OK);
     }
