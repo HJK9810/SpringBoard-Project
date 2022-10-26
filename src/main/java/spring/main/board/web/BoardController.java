@@ -11,8 +11,6 @@ import spring.main.board.domain.BoardItems;
 import spring.main.board.service.BoardService;
 import spring.main.board.service.BoardServiceImpl;
 
-import java.util.Date;
-
 @Controller
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:3000")

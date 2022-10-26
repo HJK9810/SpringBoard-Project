@@ -4,9 +4,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import spring.main.board.domain.BoardItems;
 
-import java.util.List;
-import java.util.Optional;
-
 public interface BoardService {
     Page<BoardItems> findAll(Pageable pageable);
 
@@ -14,7 +11,6 @@ public interface BoardService {
     BoardItems addItem(BoardItems item);
     BoardItems editView(Long id);
     BoardItems editItem(Long id, BoardItems item);
-    void saveItem(BoardItems item);
     BoardItems deletItem(Long id);
 
     boolean checkNull(String str);

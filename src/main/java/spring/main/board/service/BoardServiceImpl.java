@@ -8,8 +8,6 @@ import spring.main.board.domain.BoardItems;
 import spring.main.board.repository.BoardRepository;
 
 import java.util.Date;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -64,12 +62,6 @@ public class BoardServiceImpl implements BoardService {
 
         return boardRepository.findByID(id).get();
     }
-
-    @Override
-    public void saveItem(BoardItems item) {
-        boardRepository.save(item);
-    }
-
     @Override
     public BoardItems deletItem(Long id) {
         BoardItems item = boardRepository.findByID(id).get();
