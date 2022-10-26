@@ -11,6 +11,7 @@ public interface BoardService {
     Page<BoardItems> findAll(Pageable pageable);
 
     BoardItems oneView(Long id);
+    BoardItems addItem(BoardItems item);
     void saveItem(BoardItems item);
     BoardItems deletItem(Long id);
 

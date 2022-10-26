@@ -36,11 +36,7 @@ public class BoardController {
 
     @PostMapping("/add")
     private ResponseEntity<BoardItems> createOne(@RequestBody BoardItems item) {
-        Date date = new Date();
-        item.setDate(date);
-        item.setViewCnt(0L);
-        boardService.saveItem(item);
-        item = boardService.findByID(item.getID()).get();
+        item = boardService.addItem(item);
 
         return new ResponseEntity<BoardItems>(item, HttpStatus.OK);
     }

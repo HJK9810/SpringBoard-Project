@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import spring.main.board.domain.BoardItems;
 import spring.main.board.repository.BoardRepository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +26,16 @@ public class BoardServiceImpl implements BoardService{
     public BoardItems oneView(Long id) {
         BoardItems item = boardRepository.findByID(id).get();
         item.setViewCnt(item.getViewCnt() + 1);
+        boardRepository.save(item);
+
+        return item;
+    }
+
+    @Override
+    public BoardItems addItem(BoardItems item) {
+        Date date = new Date();
+        item.setDate(date);
+        item.setViewCnt(0L);
         boardRepository.save(item);
 
         return item;
