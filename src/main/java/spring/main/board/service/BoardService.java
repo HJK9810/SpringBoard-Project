@@ -13,7 +13,7 @@ public interface BoardService {
     List<BoardItems> findAllByID(Long id);
 
     void saveItem(BoardItems item);
-    void deletItem(Long id);
+    BoardItems deletItem(Long id);
 
     boolean checkNull(String str);
 }

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import spring.main.board.domain.BoardItems;
 import spring.main.board.repository.BoardRepository;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,8 +37,12 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public void deletItem(Long id) {
+    public BoardItems deletItem(Long id) {
+        BoardItems item = boardRepository.findByID(id).get();
+        item.setTitle("Delete Clear!");
         boardRepository.deleteById(id);
+
+        return item;
     }
 
     @Override
