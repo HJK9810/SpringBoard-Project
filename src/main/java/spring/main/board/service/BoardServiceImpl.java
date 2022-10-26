@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class BoardServiceImpl implements BoardService{
+public class BoardServiceImpl implements BoardService {
 
     @Autowired
     private BoardRepository boardRepository;
@@ -39,6 +39,30 @@ public class BoardServiceImpl implements BoardService{
         boardRepository.save(item);
 
         return item;
+    }
+
+    @Override
+    public BoardItems editView(Long id) {
+        BoardItems item = boardRepository.findByID(id).get();
+        item.setViewCnt(item.getViewCnt() - 1);
+        boardRepository.save(item);
+
+        return item;
+    }
+
+    @Override
+    public BoardItems editItem(Long id, BoardItems item) {
+        boardRepository.findByID(id).ifPresent(change -> {
+            if(!change.getTitle().equals(item.getTitle()) && !checkNull(item.getTitle())) {
+                change.setTitle(item.getTitle());
+            }
+            if (!change.getText().equals(item.getText()) && !checkNull(item.getText())) {
+                change.setText(item.getText());
+            }
+            boardRepository.save(change);
+        });
+
+        return boardRepository.findByID(id).get();
     }
 
     @Override

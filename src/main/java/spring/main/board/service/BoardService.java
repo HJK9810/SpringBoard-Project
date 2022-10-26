@@ -12,6 +12,8 @@ public interface BoardService {
 
     BoardItems oneView(Long id);
     BoardItems addItem(BoardItems item);
+    BoardItems editView(Long id);
+    BoardItems editItem(Long id, BoardItems item);
     void saveItem(BoardItems item);
     BoardItems deletItem(Long id);
 
