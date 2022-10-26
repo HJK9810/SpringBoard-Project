@@ -9,9 +9,8 @@ import java.util.Optional;
 
 public interface BoardService {
     Page<BoardItems> findAll(Pageable pageable);
-    Optional<BoardItems> findByID(Long id);
-    List<BoardItems> findAllByID(Long id);
 
+    BoardItems oneView(Long id);
     void saveItem(BoardItems item);
     BoardItems deletItem(Long id);
 

@@ -22,13 +22,12 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public Optional<BoardItems> findByID(Long id) {
-        return boardRepository.findByID(id);
-    }
+    public BoardItems oneView(Long id) {
+        BoardItems item = boardRepository.findByID(id).get();
+        item.setViewCnt(item.getViewCnt() + 1);
+        boardRepository.save(item);
 
-    @Override
-    public List<BoardItems> findAllByID(Long id) {
-        return boardRepository.findAllByID(id);
+        return item;
     }
 
     @Override
