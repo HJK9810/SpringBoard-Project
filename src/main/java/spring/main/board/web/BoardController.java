@@ -11,6 +11,8 @@ import spring.main.board.domain.BoardItems;
 import spring.main.board.service.BoardService;
 import spring.main.board.service.BoardServiceImpl;
 
+import javax.websocket.server.PathParam;
+
 @Controller
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -37,6 +39,13 @@ public class BoardController {
         item = boardService.addItem(item);
 
         return new ResponseEntity<BoardItems>(item, HttpStatus.OK);
+    }
+
+    @GetMapping("/idCheck/{id}")
+    private ResponseEntity<BoardItems> checkID(@PathVariable(name = "id") Long id, @PathParam("id") String editor, @PathParam("passwd") String passwd) {
+        BoardItems item = boardService.Longin(id, editor, passwd);
+
+        return new ResponseEntity<>(item, HttpStatus.OK);
     }
 
     @GetMapping("/edit/{id}")

@@ -13,5 +13,6 @@ public interface BoardService {
     BoardItems editItem(Long id, BoardItems item);
     BoardItems deletItem(Long id);
 
+    BoardItems Longin(Long id, String editor, String pw);
     boolean checkNull(String str);
 }

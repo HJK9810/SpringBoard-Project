@@ -51,7 +51,7 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public BoardItems editItem(Long id, BoardItems item) {
         boardRepository.findByID(id).ifPresent(change -> {
-            if(!change.getTitle().equals(item.getTitle()) && !checkNull(item.getTitle())) {
+            if (!change.getTitle().equals(item.getTitle()) && !checkNull(item.getTitle())) {
                 change.setTitle(item.getTitle());
             }
             if (!change.getText().equals(item.getText()) && !checkNull(item.getText())) {
@@ -62,11 +62,22 @@ public class BoardServiceImpl implements BoardService {
 
         return boardRepository.findByID(id).get();
     }
+
     @Override
     public BoardItems deletItem(Long id) {
         BoardItems item = boardRepository.findByID(id).get();
         item.setTitle("Delete Clear!");
         boardRepository.deleteById(id);
+
+        return item;
+    }
+
+    @Override
+    public BoardItems Longin(Long id, String editor, String pw) {
+        BoardItems item = boardRepository.findByID(id).get();
+        if (!item.getEditor().equals(editor) || !item.getPasswd().equals(pw)) {
+            item = null;
+        }
 
         return item;
     }
