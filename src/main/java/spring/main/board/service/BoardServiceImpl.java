@@ -3,13 +3,11 @@ package spring.main.board.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 import spring.main.board.domain.BoardItems;
 import spring.main.board.repository.BoardRepository;
 
 import java.util.Date;
 
-@Service
 public class BoardServiceImpl implements BoardService {
 
     @Autowired
